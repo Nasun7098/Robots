@@ -2,6 +2,9 @@
 space = " "
 robots = 0
 
+print("""
+
+      """)
 
 print("Unknown: *SMACK* *SMACK* WAKE UP.")
 print(space)
@@ -50,15 +53,16 @@ print(space)
 
 #add a narrator that ask questions to the player to decide movement such as a path game (bandersnatch style)
 simple_question = "yes or no?"
-print(f"Narrotor: Do you wish to go with Rocelyn to the factory?", simple_question) 
+print(f"Narrator: Do you wish to go with Rocelyn to the factory?", simple_question) 
 print(space)
-answer_000 = input()
+answer_000 = input().strip().lower()
 if answer_000 == "yes":
     print(space)
     print("You have arrived at the factory" + " " + "day: 1")
 else:
     print(space)
     print("Rocelyn: Have you decided to run away. I wouldn't recommed that.")
+    print("Rocelyn: ...Get him love")
 day = 1
 
 print(space)
@@ -68,7 +72,7 @@ print("Rocelyn: When the day ends you'll be able to exchange your gears in for N
 print(space)
 print("Rocelyn: Are you ready to begin?", simple_question)
 print(space)
-answer_001 = input()
+answer_001 = input().strip().lower()
 if answer_001 == "yes":
     print(space)
     print("Rocelyn: Great, lets start")
@@ -80,33 +84,81 @@ print("Narrator: Now begins the game you'll be prompted to collect the gears. Co
 print(space)
 print("Do you wish to gather gears. type: collect_gear ")
 print(space)
-
-actions = 10
+energy = 10
 gears = 0
-while actions > 0:
-        answer = input()
+def collect_gears(energy, gears):
+    while energy > 0:
+        answer = input().strip().lower()
         if answer == "collect_gear":
             gears += 1
-            print(space)
             print("You have collected Gears:", gears)
-            print(space)
-            actions -= 1
+            energy -= 1
             print("collect another?")
+        elif answer == "yes":
+                gears += 1
+                print("You have collected Gears:", gears)
+                energy -= 1
+                print("collect another?")
         else:
-            print("Try again, check your spelling")
-        if actions == 0:
-            print("Narrator: You have used all your actions of the day")
-            print(space)
-            print("Narrator: Return home and sleep to refresh your actions avaliable.")
-if actions == 0:
+            print("Try again, check your spelling.")
+    return gears
+
+gears = collect_gears(energy, gears)
+print("Total gears after the day:", gears)
+
+print("Narrator: You have used all your energy of the day.")
+print(space)
+print("Narrator: Return home and sleep to refresh your energy avaliable.")
+print(space)
+print("Narrator: Do you wish to return home and sleep?")
+
+answer_002 = input()
+if answer_002 == "yes":
     print(space)
-    print("Go home and sleep?")
-    answer = input()
-    if answer == "yes":
+    print("Narrator: You have slept well and your energy has replinished.")
+    day += 1
+    print(space)
+    print ("Day:",day)
+else:
+    print(space)
+    print("Narrator: Not yet, Thats fine do you want to exhange your gears for NFTS?")
+    answer_003 = input()
+    if answer_003 == "yes":
         print(space)
-        print("you have slept well.")
-        actions += 10
-    else:
-        print("you have died of exhaustion")
+        print("Narrator: Too bad you have no energy. Next time try stopping before you use all your energy for the day.")
+        print(space)
+        print("Go to bed and replinish your energy?")
+        answer_004 = input()
+        if answer_004 == "yes":
+            print(space)
+            print("Narrator: You have slept well and replinished your energy.")
+            energy += 10
+        else:
+            print("Narrator: Let me warn you once if you dont go to sleep now you will die.")
+            print(space)
+            print("Narrator: Do you wish to go to sleep or struggle pathetically.")
+            answer_007 = input()
+            if answer_007 == "yes":
+                print("Narrator: you have slept well and replinished your energy.")
+                energy += 10
+            else:
+                print("""
+                         Narrator:
+                      
+                         Narrator: relentess. huh.
+                      
+                         Narrator:
+                      
+                       """)
+                print("Narrator: You wake up sore and on the ground.")
+                energy += 5
+                print(space)
+                print(f"{player}: *Thinking* Seems not even the narrator is on my side *Thinking*")
 
 
+print("Narrator: Head to the factory or market?")
+answer_005 = input()
+if answer_005 == "the factory" or "factory":
+    print(space)
+    print("welcome to the factory. Are you ready to begin work?")
+answer_006 = input()
