@@ -8,7 +8,7 @@ Requirments :
   Be able to run python and input text
 
 Description :
-  You've arriven in "The Trailer Park". A communon with questionable practices and laws. 
+  You've arriven in "The Trailer Park". A commune with questionable practices and laws. 
 You're a worker collecting gears to make mechanoids ...robots (Don't tell Gerald I said that).
 
 Future plans :
